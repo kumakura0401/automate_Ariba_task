@@ -34,3 +34,21 @@ if ($a) {
     install_webdriver
 }
 
+
+
+#下記だと失敗する
+<#
+if ($a) {
+    install_python
+    install_webdriver
+}
+
+if ($p) {
+    install_python
+}
+
+if ($d) {
+    install_webdriver
+}
+#>
+
