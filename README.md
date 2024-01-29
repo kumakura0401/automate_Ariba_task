@@ -18,3 +18,12 @@ python ariba.pyのパス
 - pythonがクライアント機でインストールされてない場合
 
 inst_py_and_webDriv.ps1を実行してpythonとWebDriverをインストールする(管理者権限で実行).
+
+-a・・・どちらもインストール
+
+-p・・・pythonインストール
+
+-d・・・WebDriverインストール
+```
+& "inst_py_and_webDriv.ps1パス" オプション
+```
