@@ -13,6 +13,11 @@ function install_python {
     Invoke-WebRequest -Uri $pythonUrl -OutFile $installerPath
     Start-Process $installerPath -ArgumentList '/quiet InstallAllUsers=0 PrependPath=1' -Wait
     Remove-Item $installerPath
+
+    $Python = "C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python310\Scripts"
+    "$Python\pip.exe install selenium"
+    "$Python\pip.exe install PyPDF2"
+    "Python has been installed."
 }
 
 function install_webdriver {
@@ -21,9 +26,12 @@ function install_webdriver {
     Invoke-WebRequest -Uri $chromeDriverUrl -OutFile "$env:TEMP\chromedriver.zip"
     Expand-Archive -Path "$env:TEMP\chromedriver.zip" -DestinationPath "C:\hogehoge"
     Remove-Item -Path "$env:TEMP\chromedriver.zip" -Force
+    "ChromeDriver has been installed."
 }
 
-if ($a) {
+#オプションが複数してされた場合に対応できるようelseifではなくifを使用（オプション増やす可能性あるので）
+
+if ($a -or -not($a -or $p -or $d)) {
     install_python
     install_webdriver
 }
@@ -35,5 +43,4 @@ if ($p) {
 if ($d) {
     install_webdriver
 }
-
 
